@@ -32,3 +32,5 @@ SELECT
 FROM {{ ref('stg_ecommerce__orders') }} AS od
 LEFT JOIN order_item_measures AS om
 	ON od.order_id = om.order_id
+LEFT JOIN {{ ref('int_ecommerce__first_order_created') }} AS fo
+	ON od.user_id = fo.user_id
